@@ -3,8 +3,8 @@ const keys = require('../config/keys');
 
 module.exports = app => {
   app.get('/api/games/top', async (req, res) => {
-    const topGames = await axios.get(`https://api.twitch.tv/kraken/games/top?client_id=${keys.twitchClientID}`);
+    const games = await axios.get(`${keys.twitchApiUrl}/games/top?client_id=${keys.twitchClientID}`);
 
-    res.send(topGames.data);
+    res.send(games.data);
   });
 };
