@@ -7,4 +7,11 @@ module.exports = app => {
 
     res.send(streams.data);
   });
+
+  app.get('/api/streams/:game', async (req, res) => {
+    const { game } = req.params;
+    const streams = await axios.get(`${keys.twitchApiUrl}/streams?game=${game}&client_id=${keys.twitchClientID}`);
+
+    res.send(streams.data);
+  });
 };
